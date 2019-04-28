@@ -205,7 +205,7 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
         if (export != null && !export) {
             return;
         }
-
+        //延迟暴露
         if (delay != null && delay > 0) {
             delayExportExecutor.schedule(new Runnable() {
                 @Override
@@ -218,6 +218,7 @@ public class ServiceConfig<T> extends AbstractServiceConfig {
         }
     }
 
+    //comment 暴露服务
     protected synchronized void doExport() {
         if (unexported) {
             throw new IllegalStateException("Already unexported!");
